@@ -1,0 +1,17 @@
+#background-div {
+	position: relative
+}
+
+#ac1 {
+	position: absolute;
+	top: 10%;
+	left: 10%;
+	bottom: 70%;
+	right: 50%;
+}
+
+#paper-div {
+	position: absolute;
+	bottom: 10%
+	left: 10%
+}

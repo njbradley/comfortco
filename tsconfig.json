@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "outFile": "build.js",
+    "sourceRoot": "./scripts/",
+    "rootDir": "./scripts/",
+    "sourceMap": true
+  }
+}
