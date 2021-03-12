@@ -1,7 +1,6 @@
-/// <reference path="./activity.ts" />
-/// <reference path="./politics.ts" />
+/// <reference path="./game.ts" />
 
-fetch("json/report1.json")
+fetch("json/report2.json")
 .then(result => result.json())
 .then(result => {
 	let act = new activity.ReportActivity(result);

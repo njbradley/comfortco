@@ -1,30 +1,39 @@
-namespace politics {
-	
-	export class Opinion {
-		public: number;
-		gov: number;
-	}
-	
+namespace pol {
 	export class Law {
 		name: string;
 		text: string;
 		money: number;
-		
-		opinion: Opinion;
 		
 		constructor(obj: object) {
 			Object.assign(this, obj);
 		}
 		
 		passing(): boolean {
-			// return this.public_support().sum() > 0.5
-			// && this.gov_support().sum() > 0.5;
 			return this.opinion.gov > 0.5;
 		}
 	}
 	
-	export class Person {
-		name: string;
-		opinion: Opinion;
+	export class Report {
+		text: string[];
+		scores: number[];
+		
+		supportingLaw: string | Law;
+		
+		constructor(obj: object) {
+			Object.assign(this, obj);
+		}
+		
+		link(lawlib: Law[]) {
+			if (typeof(supportingLaw) == "string") {
+				for (Law law of lawlib) {
+					if (law.name == supportingLaw) {
+						supportingLaw = law;
+						return;
+					}
+				}
+			}
+		}
+		
+		
 	}
 }
