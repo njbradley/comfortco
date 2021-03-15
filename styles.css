@@ -2,6 +2,11 @@
 	position: relative
 }
 
+div.bordered {
+	border: 2px solid;
+	margin: 2px
+}
+
 #ac1 {
 	position: absolute;
 	top: 10%;

@@ -1,9 +1,13 @@
 /// <reference path="./game.ts" />
+/// <reference path="./activity.ts" />
+/// <reference path="./politics.ts" />
 
-fetch("json/report2.json")
-.then(result => result.json())
-.then(result => {
-	let act = new activity.ReportActivity(result);
-	console.log(act);
-	document.getElementById("frame").appendChild(act.page(document));
-});
+async function main() {
+	var gameobj = new game.Game(document, 10000);
+	await gameobj.loadData();
+	gameobj.law = gameobj.lawlib[0];
+	gameobj.makeLawPage();
+	gameobj.makePersonPage();
+}
+
+window.onload = main;

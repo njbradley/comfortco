@@ -9,9 +9,30 @@
 </head>
 <body>
 	<h1>Comfort Co</h1>
-	<h3>the game where you end the world</h3>
 	<div id="screen">
-		<div id="frame" width="50%" height="100%"></div>
+		<div id="person-div" class="bordered">
+			<h3 id="person-name"></h3>
+			<p id="person-money"></p>
+			<p id="personop-p"></p>
+		</div>
+		<div id="lawpage-div" class="bordered">
+			<h3 id="lawpage-title"></h3>
+			<p id="lawpage-text"></p>
+			<p id="lawpage-money"></p>
+			<p id="lawpage-co2"></p>
+			<p id="lawop-p"></p>
+			<button id="lawpage-bribe-button">Bribe</button>
+			<button id="lawpage-lobby-button">Lobby</button>
+			<div id="reports-div"></div>
+			<input type="checkbox" id="pass-checkbox" name="votefor">
+			<label for="votefor">Vote for</label>
+			<button id="lawpage-continue">Continue</button>
+		</div>
+		<div id="activity-div" class="bordered"></div>
+		<div id="actcontrols-div" style="display:none;">
+			<button id="endact-button">Done</button>
+			<button id="cancelact-button">Cancel</button>
+		</div>
 	</div>
 </body>
 </html>

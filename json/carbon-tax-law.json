@@ -1,0 +1,13 @@
+{
+	"title": "H.R.763 - Energy Innovation and Carbon Dividend Act of 2019",
+	"text": "Energy Innovation and Carbon Dividend Act of 2019\n\nThis bill imposes a fee on the carbon content of fuels, including crude oil, natural gas, coal, or any other product derived from those fuels that will be used so as to emit greenhouse gases into the atmosphere.\nThe fee is imposed on the producers or importers of the fuels and is equal to the greenhouse gas content of the fuel multiplied by the carbon fee rate. The rate begins at $15 in 2019, increases by $10 each year, and is subject to further adjustments based on the progress in meeting specified emissions reduction targets. The bill also imposes a specified fee on fluorinated greenhouse gases.\nThe bill includes\n\texemptions for fuels used for agricultural or nonemitting purposes,\n\texemptions for fuels used by the Armed Forces,\n\trebates for facilities that capture and sequester carbon dioxide, and\n\tborder adjustment provisions that require certain fees or refunds for carbon-intensive products that are exported or imported.\nThe fees must be deposited into a Carbon Dividend Trust Fund and used for administrative expenses and dividend payments to U.S. citizens or lawful residents. The fees must be decommissioned when emissions levels and monthly dividend payments fall below specified levels.\nThe bill also suspends certain regulations that limit greenhouse gas emissions. The suspensions expire if the emissions targets established by this bill are not reached after a specified time period.",
+	"money": 10000,
+	"reportnames": [
+		
+	],
+	"opinion": {
+		"gov": 0.3,
+		"public":0.6
+	},
+	"link": "https://www.congress.gov/bill/116th-congress/house-bill/763"
+}

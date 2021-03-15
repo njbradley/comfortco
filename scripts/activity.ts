@@ -1,16 +1,15 @@
 /// <reference path="./politics.ts" />
 
 namespace act {
-	export class Activity {
+	export interface Activity {
 		page: (Document) => Element;
 	}
 	
-	export class ReportActivity extends Activity {
+	export class ReportActivity implements Activity, pol.Modifier {
 		report: pol.Report;
 		
 		totalScore: number;
 		constructor(report: pol.Report) {
-			super();
 			this.report = report;
 			this.totalScore = 0;
 		}
@@ -41,14 +40,123 @@ namespace act {
 			score.innerText = "Score: " + this.totalScore;
 			return basediv;
 		}
-	}
-	
-	export class LawActivity extends Activity {
-		law: pol.Law;
 		
+		change (opinion: pol.Opinion): pol.Opinion {
+			let changeval = this.totalScore / 100.0;
+			let newop: pol.Opinion = {
+				gov: opinion.gov += changeval,
+				public: opinion.public += changeval
+			}
+			return newop;
+		}
 	}
 	
-	export class CropActivity extends Activity {
+	export class LawActivity implements Activity {
+		law: pol.Law;
+		loadActivity: (Activity) => void;
+		
+		constructor(law: pol.Law, loadActivity) {
+			this.law = law;
+			this.loadActivity = loadActivity;
+		}
+		
+		page(basedoc: Document): Element {
+			let basediv = basedoc.createElement("div");
+			
+			let bribeButton = basedoc.createElement("button");
+			bribeButton.innerText = "bribe";
+			
+			return basediv;
+		}
+	}
+	
+	export class BribeActivity implements Activity {
+		bribe: pol.Bribe;
+		startop: pol.Opinion;
+		amountP: HTMLElement;
+		newopP: HTMLElement;
+		
+		constructor(startop: pol.Opinion) {
+			this.bribe = new pol.Bribe(0);
+			this.startop = startop;
+		}
+		
+		page(basedoc: Document): Element {
+			let basediv = basedoc.createElement("div");
+			
+			this.amountP = basedoc.createElement("p");
+			basediv.appendChild(this.amountP);
+			
+			let upButton = basedoc.createElement("button");
+			upButton.onclick = () => {this.bribe.amount += 1000; this.update(); };
+			upButton.innerText = "^";
+			basediv.appendChild(upButton);
+			
+			let downButton = basedoc.createElement("button");
+			downButton.onclick = () => {this.bribe.amount -= 1000; this.update(); };
+			downButton.innerText = "v";
+			basediv.appendChild(downButton);
+			
+			this.newopP = basedoc.createElement("p");
+			basediv.appendChild(this.newopP);
+			
+			this.update();
+			return basediv;
+		}
+		
+		update(): void {
+			this.amountP.innerText = "Amount: " + this.bribe.amount;
+			let result = this.bribe.change(this.startop);
+			this.newopP.innerText =
+			"Current Votes: " + Math.round(result.gov * 100) + "/100\n"
+			+ "Public Opinion: " + Math.round(result.public * 100) + "%";
+		}
+	}
+	
+	export class LobbyingActivity implements Activity {
+		lobbying: pol.Lobbying;
+		startop: pol.Opinion;
+		amountP: HTMLElement;
+		newopP: HTMLElement;
+		
+		constructor(startop: pol.Opinion) {
+			this.lobbying = new pol.Lobbying(0);
+			this.startop = startop;
+		}
+		
+		page(basedoc: Document): Element {
+			let basediv = basedoc.createElement("div");
+			
+			this.amountP = basedoc.createElement("p");
+			basediv.appendChild(this.amountP);
+			
+			let upButton = basedoc.createElement("button");
+			upButton.onclick = () => {this.lobbying.amount += 1000; this.update(); };
+			upButton.innerText = "^";
+			basediv.appendChild(upButton);
+			
+			let downButton = basedoc.createElement("button");
+			downButton.onclick = () => {this.lobbying.amount -= 1000; this.update(); };
+			downButton.innerText = "v";
+			basediv.appendChild(downButton);
+			
+			this.newopP = basedoc.createElement("p");
+			basediv.appendChild(this.newopP);
+			
+			this.update();
+			return basediv;
+		}
+		
+		update(): void {
+			this.amountP.innerText = "Amount: " + this.lobbying.amount;
+			let result = this.lobbying.change(this.startop);
+			this.newopP.innerText =
+			"Current Votes: " + Math.round(result.gov * 100) + "/100\n"
+			+ "Public Opinion: " + Math.round(result.public * 100) + "%";
+		}
+	}
+	
+	export class CropActivity implements Activity {
 		imgpath: string;
 		caption: string;
 		xdim: number;
@@ -65,23 +173,23 @@ namespace act {
 		rect: Element;
 		
 		constructor(obj: object) {
-			super();
 			Object.assign(this, obj);
 		}
 		
 		page = (basedoc: Document) => {
-			let img = basedoc.createElement("div");
-			img.src = this.imgpath;
-			let svg = basedoc.createElement("svg");
-			svg.height = this.ydim;
-			svg.width = this.xdim;
-			img.appendChild(svg);
-			rect = basedoc.createElement("rect");
-			rect.x = 0;
-			rect.y = 0;
-			rect.width = xdim;
-			rect.height = ydim;
-			return img;
+			// let img = basedoc.createElement("image");
+			// img.src = this.imgpath;
+			// let svg = basedoc.createElement("svg");
+			// svg.height = this.ydim;
+			// svg.width = this.xdim;
+			// img.appendChild(svg);
+			// rect = basedoc.createElement("rect");
+			// rect.x = 0;
+			// rect.y = 0;
+			// rect.width = xdim;
+			// rect.height = ydim;
+			// return img;
+			return null;
 		}
 	}
 }
