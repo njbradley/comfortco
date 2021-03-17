@@ -22,11 +22,12 @@ namespace act {
 			title.innerText = this.report.title;
 			basediv.appendChild(title);
 			let score = basedoc.createElement("p");
+			score.style.display = "none";
 			basediv.appendChild(score);
 			for (let i = 0; i < this.report.text.length; i ++) {
 				let p = basedoc.createElement("span");
 				p.innerText = this.report.text[i];
-				p.style.cssText += "border: 2px solid rgb(200,200,200); margin: 10px; line-height: 2; font-size: 18px;"
+				p.style.cssText += "border: 2px solid grey; margin: 10px; line-height: 2; font-size: 18px;"
 				p.onclick = () => {
 					if (p.innerText == "...") {
 						p.innerText = this.report.text[i];
@@ -41,6 +42,11 @@ namespace act {
 				this.totalScore += this.report.scores[i];
 			}
 			score.innerText = "Score: " + this.totalScore;
+			
+			let citation = basedoc.createElement("p");
+			citation.style.cssText += "color: grey;font-size: 12px;";
+			citation.innerText = this.report.citation;
+			basediv.appendChild(citation);
 			return basediv;
 		}
 		

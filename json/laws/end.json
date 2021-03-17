@@ -1,0 +1,14 @@
+{
+	"title": "The end",
+	"text": "Unfortunately, these were all the laws I was able to create. I hope you enjoyed the game idea!",
+	"money": 1000000,
+	"co2": -100000,
+	"reportnames": [
+		
+	],
+	"opinion": {
+		"gov": 1,
+		"public": 1
+	},
+	"ref": "#"
+}

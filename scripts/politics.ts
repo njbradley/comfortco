@@ -47,6 +47,7 @@ namespace pol {
 		text: string[];
 		scores: number[];
 		supportingLawName: string;
+		citation: string;
 		
 		constructor(obj: object) {
 			Object.assign(this, obj);
