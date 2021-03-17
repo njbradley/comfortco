@@ -16,14 +16,17 @@ namespace act {
 		
 		page = (basedoc: Document) => {
 			let basediv = basedoc.createElement("div");
-			basediv.style.cssText +=
-			"background-image: url(\"images/texteditor.png\"); padding: 15%; padding-top: 100px; width: 500px;  background-size: cover;";
+			basediv.style.cssText += "padding: 40px"
+			// "background-image: url(\"images/texteditor.png\"); padding: 15%; padding-top: 100px; width: 500px;  background-size: cover;";
+			let title = basedoc.createElement("h3");
+			title.innerText = this.report.title;
+			basediv.appendChild(title);
 			let score = basedoc.createElement("p");
 			basediv.appendChild(score);
 			for (let i = 0; i < this.report.text.length; i ++) {
 				let p = basedoc.createElement("span");
 				p.innerText = this.report.text[i];
-				p.style.cssText += "border: 3px solid rgb(200,200,200); margin: 10px; line-height: 2; font-size: 18px;"
+				p.style.cssText += "border: 2px solid rgb(200,200,200); margin: 10px; line-height: 2; font-size: 18px;"
 				p.onclick = () => {
 					if (p.innerText == "...") {
 						p.innerText = this.report.text[i];
@@ -75,6 +78,7 @@ namespace act {
 		startop: pol.Opinion;
 		amountP: HTMLElement;
 		newopP: HTMLElement;
+		forcheck: HTMLInputElement;
 		
 		constructor(startop: pol.Opinion) {
 			this.bribe = new pol.Bribe(0);
@@ -97,6 +101,18 @@ namespace act {
 			downButton.innerText = "v";
 			basediv.appendChild(downButton);
 			
+			this.forcheck = basedoc.createElement("input");
+			this.forcheck.type = "checkbox";
+			this.forcheck.checked = true;
+			this.forcheck.name = "for";
+			this.forcheck.onclick = () => this.update();
+			basediv.appendChild(this.forcheck);
+			
+			let label = basedoc.createElement("label");
+			label.htmlFor = "for";
+			label.innerText = "For the bill";
+			basediv.appendChild(label);
+			
 			this.newopP = basedoc.createElement("p");
 			basediv.appendChild(this.newopP);
 			
@@ -105,6 +121,11 @@ namespace act {
 		}
 		
 		update(): void {
+			if (this.forcheck.checked) {
+				this.bribe.multiplier = 1;
+			} else {
+				this.bribe.multiplier = -1;
+			}
 			this.amountP.innerText = "Amount: " + this.bribe.amount;
 			let result = this.bribe.change(this.startop);
 			this.newopP.innerText =
@@ -118,6 +139,7 @@ namespace act {
 		startop: pol.Opinion;
 		amountP: HTMLElement;
 		newopP: HTMLElement;
+		forcheck: HTMLInputElement;
 		
 		constructor(startop: pol.Opinion) {
 			this.lobbying = new pol.Lobbying(0);
@@ -140,6 +162,18 @@ namespace act {
 			downButton.innerText = "v";
 			basediv.appendChild(downButton);
 			
+			this.forcheck = basedoc.createElement("input");
+			this.forcheck.type = "checkbox";
+			this.forcheck.name = "for";
+			this.forcheck.checked = true;
+			this.forcheck.onclick = () => this.update();
+			basediv.appendChild(this.forcheck);
+			
+			let label = basedoc.createElement("label");
+			label.htmlFor = "for";
+			label.innerText = "For the bill";
+			basediv.appendChild(label);
+			
 			this.newopP = basedoc.createElement("p");
 			basediv.appendChild(this.newopP);
 			
@@ -148,6 +182,11 @@ namespace act {
 		}
 		
 		update(): void {
+			if (this.forcheck.checked) {
+				this.lobbying.multiplier = 1;
+			} else {
+				this.lobbying.multiplier = -1;
+			}
 			this.amountP.innerText = "Amount: " + this.lobbying.amount;
 			let result = this.lobbying.change(this.startop);
 			this.newopP.innerText =

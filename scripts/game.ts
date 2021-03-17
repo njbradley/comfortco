@@ -47,7 +47,7 @@ namespace game {
 				let opinion = this.law.opinion;
 				if (this.law.passing()) {
 					this.money += this.law.money;
-					this.co2 += this.law.money;
+					this.co2 += this.law.co2;
 				} else {
 					opinion = {
 						gov: 1 - opinion.gov,
@@ -63,12 +63,21 @@ namespace game {
 				this.makeLawPage();
 				this.makePersonPage();
 			};
+			
+			//this.doc.documentElement.style.setProperty("--display-help", "none");
+			this.doc.getElementById("help-button").onclick = () => {
+				if (this.doc.documentElement.style.getPropertyValue("--display-help") == "unset") {
+					this.doc.documentElement.style.setProperty("--display-help", "none");
+				} else {
+					this.doc.documentElement.style.setProperty("--display-help", "unset");
+				}
+			};
 		}
 		
 		async loadData(): Promise<void> {
 			let reportfiles = await (await fetch("json/reports.json")).json();
 			for (let filename of reportfiles) {
-				let data = await (await fetch("json/" + filename)).json();
+				let data = await (await fetch("json/reports/" + filename)).json();
 				data.path = filename;
 				let report = new pol.Report(data);
 				this.reportlib.push(report);
@@ -76,7 +85,7 @@ namespace game {
 			
 			let lawfiles = await (await fetch("json/laws.json")).json();
 			for (let filename of lawfiles) {
-				let data = await (await fetch("json/" + filename)).json();
+				let data = await (await fetch("json/laws/" + filename)).json();
 				let newlaw = new pol.Law(data);
 				newlaw.link(this.reportlib);
 				this.lawlib.push(newlaw);
@@ -87,11 +96,11 @@ namespace game {
 			let basediv = this.doc.getElementById("lawpage-div");
 			this.doc.getElementById("lawpage-title").innerText = this.law.title;
 			this.doc.getElementById("lawpage-text").innerText = this.law.text;
-			this.doc.getElementById("lawpage-money").innerText =
-			"Estimated cost: " + this.law.money;
-			this.doc.getElementById("lawpage-co2").innerText =
-			"Estimated CO2 impact: " + this.law.co2;
+			this.doc.getElementById("lawpage-money").innerText = "" + this.law.money;
+			this.doc.getElementById("lawpage-co2").innerText = "" + this.law.co2;
 			this.makeOpinionPage();
+			let lawlink: any = this.doc.getElementById("lawpage-link")
+			lawlink.href = this.law.ref;
 			
 			let checkbox: any = this.doc.getElementById("pass-checkbox")
 			checkbox.checked = false;
@@ -141,9 +150,8 @@ namespace game {
 		}
 		
 		makeOpinionPage() {
-			this.doc.getElementById("lawop-p").innerText =
-			"Current Votes: " + Math.round(this.law.opinion.gov * 100) + "/100\n"
-			+ "Public Opinion: " + Math.round(this.law.opinion.public * 100) + "%";
+			this.doc.getElementById("lawop-gov").innerText = "" + Math.round(this.law.opinion.gov * 100);
+			this.doc.getElementById("lawop-public").innerText = "" + Math.round(this.law.opinion.public * 100);
 			if (this.law.passing()) {
 				this.doc.getElementById("lawpage-continue").innerText = "Continue (Passing)";
 			} else {
@@ -153,10 +161,10 @@ namespace game {
 		
 		makePersonPage() {
 			this.doc.getElementById("person-name").innerText = this.person.name;
-			this.doc.getElementById("person-money").innerText = "Money: " + this.money;
-			this.doc.getElementById("personop-p").innerText =
-			"Government opinion: " + Math.round(this.person.opinion.gov * 100) + " support\n"
-			+ "Public Opinion: " + Math.round(this.person.opinion.public * 100) + "% support";
+			this.doc.getElementById("person-money").innerText = "" + this.money;
+			this.doc.getElementById("person-co2").innerText = "" + this.co2
+			this.doc.getElementById("personop-gov").innerText = "" + Math.round(this.person.opinion.gov * 100);
+			this.doc.getElementById("personop-public").innerText = "" + Math.round(this.person.opinion.public * 100);
 		}
 		
 		startact(activ: act.Activity) {

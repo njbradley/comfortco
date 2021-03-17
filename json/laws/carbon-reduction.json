@@ -1,0 +1,14 @@
+{
+	"title": "H.R.5457 - Carbon Reduction and Tax Credit Act",
+	"text": "This bill imposes an excise tax based on the carbon content of fuel. The tax is equal to $40 per ton of carbon contained in fuel (1) produced at a coal mine or an oil or gas well located in the United States; or (2) entered into the United States for consumption, use, or warehousing. The bill requires the tax rate to be adjusted for inflation.\n\nThe bill also allows a refundable tax credit of up to $1,000 for each individual taxpayer and each dependent of the taxpayer. The credit must be reduced by a specified amount if the taxpayer's adjusted gross income exceeds $314,000 ($157,000 in the case of a return other than a joint return). The bill requires that the dollar amounts of the credit be adjusted for inflation and specifies that nonresident aliens are ineligible for the credit.",
+	"money": -50000,
+	"co2": -0.2,
+	"reportnames": [
+		"carbon-tax.json"
+	],
+	"opinion": {
+		"gov": 0.25,
+		"public": 0.5
+	},
+	"ref": "https://www.congress.gov/bill/116th-congress/house-bill/5457?q=%7B%22search%22%3A%5B%22carbon%22%5D%7D&s=2&r=11"
+}

@@ -1,4 +1,6 @@
 [
-	"report1.json",
-	"report2.json"
+	"economic-effect.json",
+	"economic-growth.json",
+	"carbon-tax.json",
+	"public-lands.json"
 ]

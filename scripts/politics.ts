@@ -10,6 +10,7 @@ namespace pol {
 		text: string;
 		money: number;
 		co2: number;
+		ref: string;
 		
 		opinion: Opinion;
 		
@@ -54,16 +55,19 @@ namespace pol {
 	
 	export class Bribe implements Modifier {
 		amount: number;
+		multiplier: number;
 		static voteprice: number = 100000;
 		
 		constructor(amount: number) {
 			this.amount = amount;
+			this.multiplier = 1;
 		}
 		
 		change(opinion: Opinion): Opinion {
+			let amount = this.amount * this.multiplier;
 			let newop : Opinion = {
-				gov: opinion.gov + this.amount / Bribe.voteprice,
-				public: opinion.public - this.amount / Bribe.voteprice * 0.1
+				gov: opinion.gov + amount / Bribe.voteprice,
+				public: opinion.public - amount / Bribe.voteprice * 0.1
 			};
 			return newop;
 		}
@@ -71,16 +75,19 @@ namespace pol {
 	
 	export class Lobbying implements Modifier {
 		amount: number;
+		multiplier: number;
 		static appealprice: number = 500000;
 		
 		constructor(amount: number) {
 			this.amount = amount;
+			this.multiplier = 1;
 		}
 		
 		change(opinion: Opinion): Opinion {
+			let amount = this.amount * this.multiplier;
 			return {
-				gov: opinion.gov + this.amount / Lobbying.appealprice,
-				public: opinion.public + this.amount / Lobbying.appealprice
+				gov: opinion.gov + amount / Lobbying.appealprice,
+				public: opinion.public + amount / Lobbying.appealprice * 5
 			};
 		}
 	}

@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html style="--display-help: none">
 <head>
 	<meta charset="utf-8"/>
 	<title>Comfort Co</title>
@@ -8,25 +8,51 @@
 	<script> </script>
 </head>
 <body>
-	<h1>Comfort Co</h1>
+	<h1>Comfort Co</h1><button id="help-button">Help</button>
 	<div id="screen">
 		<div id="person-div" class="bordered">
 			<h3 id="person-name"></h3>
-			<p id="person-money"></p>
-			<p id="personop-p"></p>
+			Money: $<span id="person-money"></span>
+			<span class="help">This is your current money</span><br>
+			Global warming level: <span id="person-co2"></span> degrees
+			<span class="help">This is the current global warming level. Try to get it to zero!</span><br>
+			<div class="bordered opinion">
+				<span class="small-label">Governmental Opinion:</span><span id="personop-gov"></span>%<br>
+				<span class="small-label">Public Opinion:</span><span id="personop-public"></span>%<br>
+			</div>
+			<span class="help">This is the current government and public opinion on you. If you vote for popular bills, it will go up.</span>
 		</div>
 		<div id="lawpage-div" class="bordered">
-			<h3 id="lawpage-title"></h3>
-			<p id="lawpage-text"></p>
-			<p id="lawpage-money"></p>
-			<p id="lawpage-co2"></p>
-			<p id="lawop-p"></p>
-			<button id="lawpage-bribe-button">Bribe</button>
-			<button id="lawpage-lobby-button">Lobby</button>
-			<div id="reports-div"></div>
-			<input type="checkbox" id="pass-checkbox" name="votefor">
-			<label for="votefor">Vote for</label>
+			<div class="bordered lawtext">
+				<h3 id="lawpage-title"></h3>
+				<span id="lawpage-text"></span>
+				<a id="lawpage-link" target="_blank" rel="noopener noreferrer">[.]</a>
+				<span class=help>This is the current law being voted on.</span>
+			</div>
+			<span class="small-label">Your estimated monetary impact:</span> $<span id="lawpage-money"></span>
+			<span class="help">This is the estimated impact this bill will have on your money.</span><br>
+			<span class="small-label">Impact on global warming:</span> <span id="lawpage-co2"></span> degrees
+			<span class="help">This is the impact the bill will have on global warming. If the bill passes, both these effects will happen.</span><br>
+			<div class="bordered opinion">
+				<span class="small-label">Current Votes:</span><span id="lawop-gov"></span>/100<br>
+				<span class="small-label">Public Opinion:</span><span id="lawop-public"></span>%<br>
+			</div>
+			<span class="help">This is the opinion on the bill. More than 50 votes are needed to pass!</span><br>
+			<div class="bordered opinion">
+				<span>Actions:</span>
+				<button id="lawpage-bribe-button">Bribe</button>
+				<button id="lawpage-lobby-button">Lobby</button>
+				<div id="reports-div" class="opinion"></div>
+			</div>
+			<div class="opinion help">These are all the actions you can take to influence the opinion on the bill.<br>
+			Bribes get votes, but are not good for public opinion. Lobbying helps with public opinion, but is expensive.<br>
+			Publishing a report is free, but you can't make the report say exactly what you want...</div><br>
+			<div class="bordered opinion">
+				<input type="checkbox" id="pass-checkbox" name="votefor">
+				<label for="votefor">Vote for?</label>
+			</div>
 			<button id="lawpage-continue">Continue</button>
+			<span class="help">Click this when you are ready to go on, and the bill will pass or fail, depending on the votes.</span>
 		</div>
 		<div id="activity-div" class="bordered"></div>
 		<div id="actcontrols-div" style="display:none;">

@@ -1,0 +1,14 @@
+{
+	"title": "H.R.407 - Responsible Climate Action and American Competitiveness Act",
+	"text": "This bill requires the President to notify Congress at least 30 days before submitting to the other parties of the Paris Agreement the climate change-related actions the United States will take. (The agreement refers to these planned actions as nationally determined contributions.)\n\nThe notification to Congress must contain certain information including (1) a detailed economic justification of the planned actions, (2) a cost-benefit analysis of the actions, and (3) a description of how the actions will support U.S. efforts to counter the malign influence of the Chinese and Russian governments over energy supply chains.\n\nThe Paris Agreement requires each party to periodically submit its planned actions for addressing climate change, such as a plan to reduce its greenhouse gas emissions by a certain level.",
+	"money": 5000,
+	"co2": 0.05,
+	"reportnames": [
+		"economic-effect.json"
+	],
+	"opinion": {
+		"gov": 0.6,
+		"public": 0.4
+	},
+	"ref": "https://www.congress.gov/bill/117th-congress/house-bill/407?q=%7B%22search%22%3A%5B%22carbon%22%5D%7D&s=1&r=9"
+}

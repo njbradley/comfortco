@@ -1,0 +1,14 @@
+{
+	"title": "H.R.878 -- PUBLIC act of 2021",
+	"text": "This bill sets forth provisions concerning the restoration, economic development, and conservation of, and recreational access to, certain public lands in California.\n\nThe bill establishes\n\n    the South Fork Trinity-Mad River Restoration Area,\n    the California Public Lands Remediation Partnership,\n    the Trinity Lake and Del Norte County visitor centers,\n    the Horse Mountain Special Management Area,\n    the Elk Camp Ridge Recreation Trail,\n    the Sanhedrin Special Conservation Management Area, and\n    the Condor National Scenic Trail.\n\nThe bill designates\n\n    specified federal lands as components of the National Wilderness Preservation System,\n    the North Fork Wilderness as the North Fork Eel River Wilderness,\n    specified federal lands as potential wilderness areas, and\n    specified segments of certain rivers and creeks and of a specified river estuary as components of the National Wild and Scenic Rivers System.\n\nAlso, the bill\n\n    authorizes the utilization of certain forest residues for research and development of biobased products that result in net carbon sequestration,\n    authorizes initiatives to restore degraded redwood forest ecosystems in the Redwood National Forest and state parks,\n    requires specified recreational studies and partnerships, and\n    expands the boundaries of the Elkhorn Ridge Wilderness.\n",
+	"money": 0,
+	"co2": 0.05,
+	"reportnames": [
+		"public-lands.json"
+	],
+	"opinion": {
+		"gov": 0.48,
+		"public": 0.7
+	},
+	"ref": "https://www.congress.gov/bill/117th-congress/house-bill/878?q=%7B%22search%22%3A%5B%22carbon%22%5D%7D&s=3&r=7"
+}

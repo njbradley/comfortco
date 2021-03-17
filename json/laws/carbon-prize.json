@@ -1,0 +1,14 @@
+{
+	"title": "H.R.3282 - Carbon Capture Prize Act",
+	"text": "The bill directs the Department of Energy to carry out a competition to award prizes for technology that reduces the amount of carbon dioxide in the atmosphere, including through direct carbon removal and permanent sequestration.",
+	"money": 0,
+	"co2": -0.05,
+	"reportnames": [
+		
+	],
+	"opinion": {
+		"gov": 0.65,
+		"public": 0.7
+	},
+	"ref": "https://www.congress.gov/bill/116th-congress/house-bill/3282?q=%7B%22search%22%3A%5B%22carbon%22%5D%7D&r=5&s=2"
+}

@@ -3,7 +3,7 @@
 /// <reference path="./politics.ts" />
 
 async function main() {
-	var gameobj = new game.Game(document, 10000);
+	var gameobj = new game.Game(document, 1000000);
 	await gameobj.loadData();
 	gameobj.law = gameobj.lawlib[0];
 	gameobj.makeLawPage();
